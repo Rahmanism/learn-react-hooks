@@ -1,18 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { userSignal } from './userSignals'
 
 export function Sidebar() {
   const user = userSignal
+  const [username, setUsername] = useState(user.value.name)
 
   return (
     <div>
       <h3>Sidebar</h3>
       <p>{user.value.name}</p>
-      <button
-        onClick={() => (user.value = { ...user.value, name: 'Mammad Signal' })}
-      >
-        Change user
-      </button>
+      <p>
+        <input
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <br />
+        <button
+          onClick={() =>
+            (user.value = { ...user.value, name: username })
+          }
+        >
+          Change user
+        </button>
+      </p>
     </div>
   )
 }

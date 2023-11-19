@@ -1,22 +1,32 @@
+import { useState } from 'react'
 import { useUserContext } from './userContext'
 
 export function Sidebar() {
   const [user, setUser] = useUserContext()
+  const [username, setUsername] = useState(user.name)
 
   return (
     <div>
       <h3>Sidebar</h3>
       <p>{user.name}</p>
-      <button
-        onClick={() => {
-          setUser((u) => ({
-            ...u,
-            name: 'Mammad',
-          }))
-        }}
-      >
-        Change user
-      </button>
+      <p>
+        <input
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <br />
+        <button
+          onClick={() => {
+            setUser((u) => ({
+              ...u,
+              name: username,
+            }))
+          }}
+        >
+          Change user
+        </button>
+      </p>
     </div>
   )
 }
