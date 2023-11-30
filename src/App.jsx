@@ -6,6 +6,7 @@ import DemoDashboardSignals from './dashboard-signals'
 import DemoUseCallback from './useCallback'
 import { Button } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import DemoImperativeHandle from './imperativeHandle'
 
 function App() {
   const [currentTab, setCurrentTab] = useState('usecallback')
@@ -29,19 +30,25 @@ function App() {
           onClick={() => setCurrentTab('normaldashboard')}
           variant={currentTab === 'normaldashboard' ? 'primary' : 'secondary'}
         >
-          normal dashboard
+          Normal Dashboard
         </Button>
         <Button
           onClick={() => setCurrentTab('signals')}
           variant={currentTab === 'signals' ? 'primary' : 'secondary'}
         >
-          signals
+          Signals
         </Button>
         <Button
           onClick={() => setCurrentTab('context')}
           variant={currentTab === 'context' ? 'primary' : 'secondary'}
         >
-          context
+          Context
+        </Button>
+        <Button
+          onClick={() => setCurrentTab('imperative')}
+          variant={currentTab === 'imperative' ? 'primary' : 'secondary'}
+        >
+          Imperative Handle
         </Button>
       </div>
       <div>
@@ -51,6 +58,7 @@ function App() {
         )}
         {currentTab === 'signals' && <DemoDashboardSignals />}
         {currentTab === 'context' && <DemoDashboardWithContext />}
+        {currentTab === 'imperative' && <DemoImperativeHandle />}
       </div>
     </>
   )
